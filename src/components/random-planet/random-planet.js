@@ -27,11 +27,11 @@ export default class RandomPlanet extends Component {
       .getPlanet(id)
       .then((planet) => {
         this.setState({
-          id: id,
-          planetName: planet.name,
-          population: planet.population,
-          rotationPeriod: planet.rotation_period,
-          diameter: planet.diameter
+          id,
+          planetName,
+          population,
+          rotationPeriod,
+          diameter
         })
       });
   }
