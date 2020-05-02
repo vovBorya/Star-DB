@@ -2,16 +2,14 @@
     0% { transform: rotate(0) }
     100% { transform: rotate(360deg) }
 }
+
+/*TODO*/
 .back {
-    margin: 1.5rem;
-    background-color: #444;
-    display: flex;
-    padding: 1.5rem;
-    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .ldio-v6d8zct1p38 div { box-sizing: border-box!important }
 .ldio-v6d8zct1p38 > div {
     position: absolute;
@@ -87,7 +85,6 @@
 .loadingio-spinner-double-ring-8ht1cts170i {
     width: 80px;
     height: 80px;
-    display: inline-block;
     overflow: hidden;
     background: none;
 }
