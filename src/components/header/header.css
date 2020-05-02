@@ -1,6 +1,5 @@
 .header {
     margin-top: .5rem;
-    padding-left: 10px;
     width: 100%;
     font-size: 30px;
     border-bottom: .1rem solid #747474;
@@ -27,11 +26,11 @@
 }
 
 .header h2 a {
-    transition: .5s;
+    transition: .3s;
     color: white;
 }
 
 .header h2 a:hover {
-    transition: .5s;
+    transition: .3s;
     color: #00bc8c;
 }
