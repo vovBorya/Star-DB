@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import './random-planet.css';
 
+import Loader from '../loader';
+import PlanetView from './planet-view';
+
 import SwapiService from "../../services/swapi-service";
 
 export default class RandomPlanet extends Component {
@@ -9,7 +12,8 @@ export default class RandomPlanet extends Component {
   swapiService = new SwapiService();
 
   state = {
-    planet: {}
+    planet: {},
+    loading: true
   }
 
   constructor() {
@@ -18,7 +22,10 @@ export default class RandomPlanet extends Component {
   }
 
   onPlanetLoaded = (planet) => {
-    this.setState({planet})
+    this.setState({
+      planet,
+      loading: false
+    })
   }
 
   updatePlanet() {
@@ -30,31 +37,21 @@ export default class RandomPlanet extends Component {
 
   render() {
 
-    const {  planet: {id, planetName, population, rotationPeriod, diameter} } = this.state;
+    const { planet, loading } = this.state;
+
+    /*if(loading) {
+      return <Loader/>
+    }*/
+
+    const loader = loading ? <Loader /> : null;
+    const content = !loading ? <PlanetView planet={ planet }/>: null;
 
     return (
       <div className="random-planet jumbotron rounded">
-        <img className="planet-image"
-             src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} />
-        <div>
-          <h4>{ planetName }</h4>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <span className="term">Population</span>
-              <span>{ population }</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Rotation Period</span>
-              <span>{ rotationPeriod }</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Diameter</span>
-              <span> { diameter } </span>
-            </li>
-          </ul>
-        </div>
+        { loader }
+        { content }
       </div>
 
     );
-  }
-}
+  };
+};
