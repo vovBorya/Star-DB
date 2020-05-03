@@ -1,12 +1,11 @@
 .error-indicator {
+    width: 100%;
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
+    color: #c78f22;
 }
 
 .ooops {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
 }

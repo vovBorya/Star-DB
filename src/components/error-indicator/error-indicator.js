@@ -6,10 +6,10 @@ const ErrorIndicator = () => {
     <div className="error-indicator">
       <span className="ooops">Ooops! Sorry... </span>
       <span>
-        Something has gone terribly wrong.
+        Something has gone terribly wrong
       </span>
       <span>
-        But we have already sent info about error to fix it
+        (but we have already sent info about error to fix it)
       </span>
     </div>
   );

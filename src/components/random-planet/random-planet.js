@@ -26,13 +26,15 @@ export default class RandomPlanet extends Component {
   onPlanetLoaded = (planet) => {
     this.setState({
       planet,
-      loading: false
+      loading: false,
+      error: false
     })
   }
 
   onError = (error) => {
     this.setState({
-      error: true
+      error: true,
+      loading: false
     });
   };
 
@@ -48,8 +50,10 @@ export default class RandomPlanet extends Component {
 
     const { planet, loading, error } = this.state;
 
+    const hasData = !loading && !error;
+
     const loader = loading ? <Loader /> : null;
-    const content = !loading ? <PlanetView planet={ planet }/>: null;
+    const content = hasData ? <PlanetView planet={ planet }/>: null;
     const errorMessage = error ? <ErrorIndicator /> : null;
 
     return (
