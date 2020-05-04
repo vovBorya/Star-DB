@@ -1,8 +1,9 @@
 .person-details {
     display: flex;
-    margin-top: 1rem;
+    margin: 1.5rem 4rem 1.5rem 0.5rem;
     flex-direction: row;
     padding: 1rem;
+    font-size: 1.2rem;
 }
 
 .person-details .person-image {
