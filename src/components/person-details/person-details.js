@@ -4,6 +4,8 @@ import './person-details.css';
 import SwapiService from "../../services/swapi-service";
 import PersonView from "./person-view";
 import Loader from "../loader";
+import Header from "../header";
+import ErrorButton from "../error-button";
 
 export default class PersonDetails extends Component {
 
@@ -62,6 +64,7 @@ export default class PersonDetails extends Component {
       <div className="person-details card">
         {loader}
         {content}
+        <ErrorButton />
       </div>
     )
   }
