@@ -50,14 +50,6 @@ export default class PersonDetails extends Component {
     const loader = updating ? <Loader />: null;
     const content = hasData ? <PersonView person={ person } />: null;
 
-/*    if (!person) {
-      return (
-        <div className="person-details card">
-          <span>Please, select a some person from a list</span>
-        </div>
-      )
-    }*/
-
     return (
       <div className="person-details card">
         {loader}
