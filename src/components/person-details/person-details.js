@@ -4,8 +4,6 @@ import './person-details.css';
 import SwapiService from "../../services/swapi-service";
 import PersonView from "./person-view";
 import Loader from "../loader";
-import Header from "../header";
-import ErrorButton from "../error-button";
 
 export default class PersonDetails extends Component {
 
@@ -52,19 +50,10 @@ export default class PersonDetails extends Component {
     const loader = updating ? <Loader />: null;
     const content = hasData ? <PersonView person={ person } />: null;
 
-/*    if (!person) {
-      return (
-        <div className="person-details card">
-          <span>Please, select a some person from a list</span>
-        </div>
-      )
-    }*/
-
     return (
       <div className="person-details card">
         {loader}
         {content}
-        <ErrorButton />
       </div>
     )
   }
