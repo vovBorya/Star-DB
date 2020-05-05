@@ -10,7 +10,7 @@ import './app.css';
 export default class App extends Component{
 
   state = {
-    selectedPerson: null
+    selectedPerson: 6
   }
 
   onPersonSelected = (id) => {
@@ -23,7 +23,7 @@ export default class App extends Component{
     return (
       <div>
         <Header/>
-        <RandomPlanet/>
+        {/*<RandomPlanet/>*/}
         <div className="row mb2">
           <div className="col-md-6">
             <ItemList onItemSelected={this.onPersonSelected}/>
