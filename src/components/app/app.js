@@ -10,7 +10,7 @@ import './app.css';
 export default class App extends Component{
 
   state = {
-    selectedPerson: 6
+    selectedPerson: 3
   }
 
   onPersonSelected = (id) => {
