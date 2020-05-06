@@ -2,7 +2,7 @@ export default class SwapiService {
 
   _apiBase = 'https://swapi.dev/api';
 
-  async getResource(url) {
+  getResource = async (url) => {
     const res = await fetch(`${this._apiBase}${url}`);
 
     if (!res.ok) {
@@ -12,32 +12,32 @@ export default class SwapiService {
     return await res.json();
   }
 
-  async getAllPerson() {
+  getAllPerson = async () => {
     const response = await this.getResource(`/people/`)
     return response.results.map(this._transformPerson);
   }
 
-  async getPerson(id) {
+  getPerson = async (id) => {
     const person = await this.getResource(`/people/${id}`);
     return this._transformPerson(person);
   }
 
-  async getAllPlanets() {
+  getAllPlanets = async () => {
     const response = await this.getResource(`/planets/`)
     return response.results.map(this._transformPlanet) ;
   }
 
-  async getPlanet(id) {
+  getPlanet = async (id) => {
     const planet = await this.getResource(`/planets/${id}`);
     return this._transformPlanet(planet);
   }
 
-  async getAllStarships() {
+  getAllStarships = async () => {
     const response = await this.getResource(`/starships/`)
     return response.results.map(this._transformStarship);
   }
 
-  async getStarship(id) {
+  getStarship = async (id) => {
     const starship = await this.getResource(`/starships/${id}`)
     return this._transformStarship(starship);
   }
@@ -50,7 +50,7 @@ export default class SwapiService {
   _transformPlanet = (planet) => {
     return {
       id: this._extractId(planet) ,
-      planetName: planet.name,
+      name: planet.name,
       population: planet.population,
       rotationPeriod: planet.rotation_period,
       diameter: planet.diameter
