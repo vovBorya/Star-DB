@@ -1,4 +1,4 @@
-.person-details {
+.item-details {
     display: flex;
     margin: 1.5rem 4rem 1.5rem 0.5rem;
     flex-direction: row;
@@ -6,16 +6,16 @@
     font-size: 1.2rem;
 }
 
-.person-details .person-image {
+.item-details .item-image {
     width: 30%;
     height: 30%;
     border-radius: 10px;
 }
 
-.person-details .list-group-item {
+.item-details .list-group-item {
     padding: .25rem;
 }
 
-.person-details .list-group-item .term{
+.item-details .list-group-item .term{
     margin-right: .5rem;
 }
