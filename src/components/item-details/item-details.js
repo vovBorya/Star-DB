@@ -1,40 +1,40 @@
 import React, { Component } from 'react';
 
-import './person-details.css';
+import './item-details.css';
 import SwapiService from "../../services/swapi-service";
-import PersonView from "./person-view";
+import ItemView from "./item-view";
 import Loader from "../loader";
 
-export default class PersonDetails extends Component {
+export default class ItemDetails extends Component {
 
   swapiService = new SwapiService();
 
   state = {
-    person: null,
+    item: null,
     updating: true
   }
 
   componentDidMount() {
-    this.updatePerson();
+    this.updateItem();
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.personId !== prevProps.personId) {
+    if (this.props.itemId !== prevProps.itemId) {
       this.setState({
         updating: true
       })
-      this.updatePerson();
+      this.updateItem();
     }
   }
 
-  updatePerson () {
-    const personId = this.props;
-    if (personId) {
+  updateItem () {
+    const itemId = this.props;
+    if (itemId) {
       this.swapiService
-        .getPerson(this.props.personId)
-        .then((person) => {
+        .getPerson(this.props.itemId)
+        .then((item) => {
           this.setState({
-            person,
+            item,
             updating: false
           })
         })
@@ -43,15 +43,15 @@ export default class PersonDetails extends Component {
 
   render() {
 
-    const { person, updating } = this.state;
+    const { item, updating } = this.state;
 
     const hasData = !updating;
 
     const loader = updating ? <Loader />: null;
-    const content = hasData ? <PersonView person={ person } />: null;
+    const content = hasData ? <ItemView item={ item } />: null;
 
     return (
-      <div className="person-details card">
+      <div className="item-details card">
         {loader}
         {content}
       </div>

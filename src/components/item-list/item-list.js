@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 
 import './item-list.css';
 import Loader from "../loader";
-import SwapiService from "../../services/swapi-service";
-import ErrorIndicator from "../error-indicator";
 import ErrorBoundry from "../error-boundry";
 
 export default class ItemList extends Component {
-
-  swapiService = new SwapiService();
   
   state = {
     itemList: null,
