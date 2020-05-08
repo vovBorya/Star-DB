@@ -15,12 +15,16 @@ export default class App extends Component{
 
   render() {
 
-    const {getPerson, getStarship} = this.swapiService;
+    const { getPerson,
+            getStarship,
+            getPersonImage,
+            getStarshipImage} = this.swapiService;
 
     const personDetails = (
       <ItemDetails
         itemId={8}
         getData={getPerson}
+        getImageUrl={getPersonImage}
       />
     )
 
@@ -28,6 +32,7 @@ export default class App extends Component{
       <ItemDetails
         itemId={11}
         getData={getStarship}
+        getImageUrl={getStarshipImage}
       />
     )
 
