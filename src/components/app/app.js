@@ -15,7 +15,7 @@ export default class App extends Component{
     return (
       <div>
         <Header/>
-        <RandomPlanet/>
+        {/*<RandomPlanet/>*/}
         <PeoplePage />
       </div>
     );

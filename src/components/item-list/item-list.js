@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import './item-list.css';
 import Loader from "../loader";
 import SwapiService from "../../services/swapi-service";
+import ErrorIndicator from "../error-indicator";
+import ErrorBoundry from "../error-boundry";
 
 export default class ItemList extends Component {
 
@@ -27,7 +29,7 @@ export default class ItemList extends Component {
     return items.map((item) => {
       const { id } = item;
 
-      const label = this.props.renderItem(item);
+      const label = this.props.children(item);
       return (
         <li className="list-group-item"
             key={id}
@@ -48,9 +50,11 @@ export default class ItemList extends Component {
     const items = this.renderItems(itemList);
 
     return (
-      <ul className="item-list list-group">
-        {items}
-      </ul>
+      <ErrorBoundry>
+        <ul className="item-list list-group">
+          {items}
+        </ul>
+      </ErrorBoundry>
     );
   }
 }
