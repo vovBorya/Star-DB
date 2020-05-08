@@ -11,7 +11,8 @@ export default class ItemDetails extends Component {
 
   state = {
     item: null,
-    updating: true
+    updating: true,
+    image: null
   }
 
   componentDidMount() {
@@ -28,14 +29,14 @@ export default class ItemDetails extends Component {
   }
 
   updateItem () {
-    const itemId = this.props;
+    const { itemId, getData, getImageUrl } = this.props;
     if (itemId) {
-      this.swapiService
-        .getPerson(this.props.itemId)
+      getData(itemId)
         .then((item) => {
           this.setState({
             item,
-            updating: false
+            updating: false,
+            image: getImageUrl(item)
           })
         })
     }
@@ -43,12 +44,12 @@ export default class ItemDetails extends Component {
 
   render() {
 
-    const { item, updating } = this.state;
+    const { item, updating, image } = this.state;
 
     const hasData = !updating;
 
     const loader = updating ? <Loader />: null;
-    const content = hasData ? <ItemView item={ item } />: null;
+    const content = hasData ? <ItemView item={ item } image={ image } />: null;
 
     return (
       <div className="item-details card">
