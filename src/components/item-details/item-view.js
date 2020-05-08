@@ -1,12 +1,12 @@
 import React from "react";
 
-const ItemView = ({item, image}) => {
-  const { name, gender, birthYear, eyeColor } = item;
+const ItemView = ({item}) => {
+  const { id, name, gender, birthYear, eyeColor } = item;
 
   return (
     <React.Fragment>
       <img className="item-image"
-         src={image} />
+         src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
 
       <div className="card-body">
         <h4>{name}</h4>

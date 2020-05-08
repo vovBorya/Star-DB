@@ -11,8 +11,7 @@ export default class ItemDetails extends Component {
 
   state = {
     item: null,
-    updating: true,
-    image: null
+    updating: true
   }
 
   componentDidMount() {
@@ -29,14 +28,13 @@ export default class ItemDetails extends Component {
   }
 
   updateItem () {
-    const { itemId, getData, getImageUrl } = this.props;
+    const { itemId, getData } = this.props;
     if (itemId) {
       getData(itemId)
         .then((item) => {
           this.setState({
             item,
-            updating: false,
-            image: getImageUrl(item)
+            updating: false
           })
         })
     }
@@ -44,12 +42,12 @@ export default class ItemDetails extends Component {
 
   render() {
 
-    const { item, updating, image } = this.state;
+    const { item, updating } = this.state;
 
     const hasData = !updating;
 
     const loader = updating ? <Loader />: null;
-    const content = hasData ? <ItemView item={ item } image={ image } />: null;
+    const content = hasData ? <ItemView item={ item } />: null;
 
     return (
       <div className="item-details card">

@@ -6,8 +6,8 @@ import RandomPlanet from '../random-planet';
 import './app.css';
 import PeoplePage from "../people-page";
 import SwapiService from "../../services/swapi-service";
-import Row from "../row";
 import ItemDetails from "../item-details";
+import Row from "../row";
 
 export default class App extends Component{
 
@@ -15,24 +15,19 @@ export default class App extends Component{
 
   render() {
 
-    const { getPerson,
-            getStarship,
-            getPersonImage,
-            getStarshipImage } = this.swapiService;
+    const {getPerson, getStarship} = this.swapiService;
 
     const personDetails = (
       <ItemDetails
         itemId={8}
         getData={getPerson}
-        getImageUrl={getPersonImage}
       />
     )
 
     const starshipDetails = (
       <ItemDetails
-        itemId={5}
+        itemId={11}
         getData={getStarship}
-        getImageUrl={getStarshipImage}
       />
     )
 
