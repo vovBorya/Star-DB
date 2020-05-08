@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 
 import './item-details.css';
-import SwapiService from "../../services/swapi-service";
 import ItemView from "./item-view";
 import Loader from "../loader";
 
-export default class ItemDetails extends Component {
+const Record = ({item, field, label}) => (
+  <li className="list-group-item">
+    <span className="term">{label}</span>
+    <span>{ field }</span>
+  </li>
+)
+export {
+  Record
+}
 
-  swapiService = new SwapiService();
+export default class ItemDetails extends Component {
 
   state = {
     item: null,
@@ -49,7 +56,7 @@ export default class ItemDetails extends Component {
     const hasData = !updating;
 
     const loader = updating ? <Loader />: null;
-    const content = hasData ? <ItemView item={ item } image={image}/>: null;
+    const content = hasData ? <ItemView item={ item } image={image} children={this.props.children}/>: null;
 
     return (
       <div className="item-details card">

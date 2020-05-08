@@ -1,6 +1,6 @@
 import React from "react";
 
-const ItemView = ({item, image}) => {
+const ItemView = ({item, image, children}) => {
   const { id, name, gender, birthYear, eyeColor } = item;
 
   return (
@@ -11,18 +11,11 @@ const ItemView = ({item, image}) => {
       <div className="card-body">
         <h4>{name}</h4>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            <span className="term">Gender</span>
-            <span>{gender}</span>
-          </li>
-          <li className="list-group-item">
-            <span className="term">Birth Year</span>
-            <span>{birthYear}</span>
-          </li>
-          <li className="list-group-item">
-            <span className="term">Eye Color</span>
-            <span>{eyeColor}</span>
-          </li>
+          {
+            React.Children.map(children, (child) => {
+              return child
+            })
+          }
         </ul>
       </div>
     </React.Fragment>

@@ -7,6 +7,7 @@ import './app.css';
 import PeoplePage from "../people-page";
 import SwapiService from "../../services/swapi-service";
 import ItemDetails from "../item-details";
+import { Record } from "../item-details/item-details";
 import Row from "../row";
 
 export default class App extends Component{
@@ -25,7 +26,10 @@ export default class App extends Component{
         itemId={8}
         getData={getPerson}
         getImageUrl={getPersonImage}
-      />
+      >
+        <Record field="gender" label="Gender"/>
+        <Record field="eyeColor" label="Eye color"/>
+      </ItemDetails>
     )
 
     const starshipDetails = (
