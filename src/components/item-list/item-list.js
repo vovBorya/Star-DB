@@ -31,6 +31,4 @@ const ItemList = (props) => {
   );
 }
 
-const { getAllPerson } = new SwapiService();
-
-export default withData(ItemList, getAllPerson);
+export  default ItemList;
