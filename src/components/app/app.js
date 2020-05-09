@@ -47,7 +47,7 @@ export default class App extends Component{
       <div>
         <Header/>
         {/*<RandomPlanet/>*/}
-        {/*<PeoplePage />*/}
+        <PeoplePage />
 
         <Row left={personDetails} right={starshipDetails} />
       </div>

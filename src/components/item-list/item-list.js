@@ -1,56 +1,36 @@
-import React, { Component } from 'react';
+import React  from 'react';
 
 import './item-list.css';
-import Loader from "../loader";
+import { withData } from '../hoc-helper'
 import ErrorBoundry from "../error-boundry";
+import SwapiService from "../../services/swapi-service";
 
-export default class ItemList extends Component {
-  
-  state = {
-    itemList: null,
-  }
+const ItemList = (props) => {
 
-  componentDidMount() {
-    const { getData } = this.props;
+  const { data, onItemSelected } = props
 
-    getData()
-      .then((itemList) => {
-        this.setState({
-          itemList
-        });
-      });
-  }
+  const items = data.map((item) => {
+    const { id } = item;
 
-  renderItems(items) {
-    return items.map((item) => {
-      const { id } = item;
-
-      const label = this.props.children(item);
-      return (
-        <li className="list-group-item"
-            key={id}
-            onClick={() => this.props.onItemSelected(id)}>
-          {label}
-        </li>
-      );
-    });
-  }
-
-  render() {
-    const { itemList } = this.state;
-
-    if (!itemList) {
-      return <Loader />
-    }
-
-    const items = this.renderItems(itemList);
-
+    const label = props.children(item);
     return (
-      <ErrorBoundry>
-        <ul className="item-list list-group">
-          {items}
-        </ul>
-      </ErrorBoundry>
+      <li className="list-group-item"
+          key={id}
+          onClick={() => onItemSelected(id)}>
+        {label}
+      </li>
     );
-  }
+  });
+
+  return (
+    <ErrorBoundry>
+      <ul className="item-list list-group">
+        {items}
+      </ul>
+    </ErrorBoundry>
+  );
 }
+
+const { getAllPerson } = new SwapiService();
+
+export default withData(ItemList, getAllPerson);
