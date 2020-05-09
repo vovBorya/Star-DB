@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React  from 'react';
 
 import './item-list.css';
-import Loader from "../loader";
+import { withData } from '../hoc-helper'
 import ErrorBoundry from "../error-boundry";
 import SwapiService from "../../services/swapi-service";
 
@@ -29,36 +29,6 @@ const ItemList = (props) => {
       </ul>
     </ErrorBoundry>
   );
-}
-
-const withData = (View, getData) => {
-  return class extends Component{
-
-    state = {
-      data: null,
-    }
-
-    componentDidMount() {
-
-      getData()
-        .then((data) => {
-          this.setState({
-            data
-          });
-        });
-    }
-
-    render() {
-
-      const { data } = this.state;
-
-      if (!data) {
-        return <Loader />
-      }
-
-      return <View {...this.props} data={data}/>
-    }
-  }
 }
 
 const { getAllPerson } = new SwapiService();
