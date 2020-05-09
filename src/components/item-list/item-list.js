@@ -4,53 +4,61 @@ import './item-list.css';
 import Loader from "../loader";
 import ErrorBoundry from "../error-boundry";
 
-export default class ItemList extends Component {
-  
-  state = {
-    itemList: null,
-  }
+const ItemList = (props) => {
 
-  componentDidMount() {
-    const { getData } = this.props;
+  const { data, onItemSelected } = props
 
-    getData()
-      .then((itemList) => {
-        this.setState({
-          itemList
-        });
-      });
-  }
+  const items = data.map((item) => {
+    const { id } = item;
 
-  renderItems(items) {
-    return items.map((item) => {
-      const { id } = item;
+    const label = props.children(item);
+    return (
+      <li className="list-group-item"
+          key={id}
+          onClick={() => onItemSelected(id)}>
+        {label}
+      </li>
+    );
+  });
 
-      const label = this.props.children(item);
-      return (
-        <li className="list-group-item"
-            key={id}
-            onClick={() => this.props.onItemSelected(id)}>
-          {label}
-        </li>
-      );
-    });
-  }
+  return (
+    <ErrorBoundry>
+      <ul className="item-list list-group">
+        {items}
+      </ul>
+    </ErrorBoundry>
+  );
+}
 
-  render() {
-    const { itemList } = this.state;
+const withData = (View) => {
+  return class extends Component{
 
-    if (!itemList) {
-      return <Loader />
+    state = {
+      data: null,
     }
 
-    const items = this.renderItems(itemList);
+    componentDidMount() {
+      const { getData } = this.props;
 
-    return (
-      <ErrorBoundry>
-        <ul className="item-list list-group">
-          {items}
-        </ul>
-      </ErrorBoundry>
-    );
+      getData()
+        .then((data) => {
+          this.setState({
+            data
+          });
+        });
+    }
+
+    render() {
+
+      const { data } = this.state;
+
+      if (!data) {
+        return <Loader />
+      }
+
+      return <View {...this.props} data={data}/>
+    }
   }
 }
+
+export default withData(ItemList);
