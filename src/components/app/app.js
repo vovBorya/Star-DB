@@ -9,11 +9,9 @@ import SwapiService from "../../services/swapi-service";
 import ItemDetails from "../item-details";
 import { Record } from "../item-details/item-details";
 import Row from "../row";
-import {PersonDetails, PersonList, PlanetList, StarshipList} from "../sw-components";
+import {PersonDetails, PersonList, PlanetDetails, PlanetList, StarshipDetails, StarshipList} from "../sw-components";
 
 export default class App extends Component{
-
-  swapiService = new SwapiService();
 
   render() {
 
@@ -22,6 +20,10 @@ export default class App extends Component{
         <Header/>
         {/*<RandomPlanet/>*/}
         {/*<PeoplePage />*/}
+        <PersonDetails itemId={3} />
+        <PlanetDetails itemId={5} />
+        <StarshipDetails itemId={9} />
+
         <PersonList >
           { ({name}) => <span>{name}</span> }
         </PersonList>
