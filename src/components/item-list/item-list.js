@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './item-list.css';
 import Loader from "../loader";
 import ErrorBoundry from "../error-boundry";
+import SwapiService from "../../services/swapi-service";
 
 const ItemList = (props) => {
 
@@ -30,7 +31,7 @@ const ItemList = (props) => {
   );
 }
 
-const withData = (View) => {
+const withData = (View, getData) => {
   return class extends Component{
 
     state = {
@@ -38,7 +39,6 @@ const withData = (View) => {
     }
 
     componentDidMount() {
-      const { getData } = this.props;
 
       getData()
         .then((data) => {
@@ -61,4 +61,6 @@ const withData = (View) => {
   }
 }
 
-export default withData(ItemList);
+const { getAllPerson } = new SwapiService();
+
+export default withData(ItemList, getAllPerson);
