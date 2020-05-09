@@ -2,54 +2,51 @@ import React, { Component } from 'react';
 
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-
 import './app.css';
 import PeoplePage from "../people-page";
-import SwapiService from "../../services/swapi-service";
-import ItemDetails from "../item-details";
-import { Record } from "../item-details/item-details";
+import {
+  PersonDetails,
+  PersonList,
+  PlanetDetails,
+  PlanetList,
+  StarshipDetails,
+  StarshipList
+} from "../sw-components";
 import Row from "../row";
 
 export default class App extends Component{
 
-  swapiService = new SwapiService();
-
   render() {
 
-    const { getPerson,
-            getStarship,
-            getPersonImage,
-            getStarshipImage} = this.swapiService;
+    const peopleList = (
+      <PersonList >
+      { ({name}) => <span>{name}</span> }
+      </PersonList>
+    );
 
     const personDetails = (
-      <ItemDetails
-        itemId={8}
-        getData={getPerson}
-        getImageUrl={getPersonImage}
-      >
-        <Record field="gender" label="Gender:"/>
-        <Record field="eyeColor" label="Eye color:"/>
-      </ItemDetails>
-    )
-
-    const starshipDetails = (
-      <ItemDetails
-        itemId={11}
-        getData={getStarship}
-        getImageUrl={getStarshipImage}
-      >
-        <Record field="manufacturer" label="Manufacturer:"/>
-        <Record field="model" label="Model:"/>
-      </ItemDetails>
+      <PersonDetails itemId={3} />
     )
 
     return (
       <div>
         <Header/>
         {/*<RandomPlanet/>*/}
-        <PeoplePage />
+        {/*<PeoplePage />*/}
+        {/*<Row left={peopleList} right={personDetails} />*/}
+        <PersonDetails itemId={3} />
+        <PlanetDetails itemId={5} />
+        <StarshipDetails itemId={9} />
 
-        <Row left={personDetails} right={starshipDetails} />
+        <PersonList >
+          { ({name}) => <span>{name}</span> }
+        </PersonList>
+        <PlanetList >
+          { ({name}) => <span>{name}</span> }
+        </PlanetList>
+        <StarshipList >
+          { ({name}) => <span>{name}</span> }
+        </StarshipList>
       </div>
     );
   }
