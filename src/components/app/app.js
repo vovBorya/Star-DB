@@ -18,7 +18,7 @@ export default class App extends Component{
         <SwapiServiceProvider value={this.swapiService}>
           <div>
             <Header/>
-            {/*<RandomPlanet/>*/}
+            <RandomPlanet/>
             <PeoplePage />
           </div>
         </SwapiServiceProvider>
