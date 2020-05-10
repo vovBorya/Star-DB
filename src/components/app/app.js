@@ -6,13 +6,16 @@ import './app.css';
 import PeoplePage from "../people-page";
 import { SwapiServiceProvider } from "../swapi-service-context";
 import ErrorBoundry from "../error-boundry";
+import SwapiService from "../../services/swapi-service";
 
 export default class App extends Component{
+
+  swapiService = new SwapiService();
 
   render() {
     return (
       <ErrorBoundry>
-        <SwapiServiceProvider value={}>
+        <SwapiServiceProvider value={this.swapiService}>
           <div>
             <Header/>
             {/*<RandomPlanet/>*/}

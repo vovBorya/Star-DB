@@ -1,6 +1,7 @@
 import React from "react";
 import ItemDetails, {Record} from "../item-details/item-details";
 import SwapiService from "../../services/swapi-service";
+import { SwapiServiceConsumer } from "../swapi-service-context";
 
 const {
   getPerson,
@@ -13,15 +14,32 @@ const {
 
 const PersonDetails = ({ itemId }) => {
   return(
-    <ItemDetails
-      itemId={itemId}
-      getData={getPerson}
-      getImageUrl={getPersonImage}
-    >
-      <Record field="gender" label="Gender" />
-      <Record field="birthYear" label="Birth year" />
-      <Record field="eyeColor" label="Eye color" />
-    </ItemDetails>
+    <SwapiServiceConsumer>
+      {/*<ItemDetails
+        itemId={itemId}
+        getData={getPerson}
+        getImageUrl={getPersonImage}
+      >
+        <Record field="gender" label="Gender" />
+        <Record field="birthYear" label="Birth year" />
+        <Record field="eyeColor" label="Eye color" />
+      </ItemDetails>*/}
+      {
+        ({ getPerson, getPersonImage }) => {
+          return (
+            <ItemDetails
+              itemId={itemId}
+              getData={getPerson}
+              getImageUrl={getPersonImage}
+            >
+              <Record field="gender" label="Gender" />
+              <Record field="birthYear" label="Birth year" />
+              <Record field="eyeColor" label="Eye color" />
+            </ItemDetails>
+          )
+        }
+      }
+    </SwapiServiceConsumer>
   )
 };
 const PlanetDetails = ({ itemId }) => {
