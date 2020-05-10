@@ -1,15 +1,9 @@
 import React, { Component } from "react";
-import ItemList from "../item-list";
-import ItemDetails from "../item-details";
-import ErrorIndicator from "../error-indicator";
-import SwapiService from "../../services/swapi-service";
 import Row from "../row";
 import ErrorBoundry from "../error-boundry";
-import {Record} from "../item-details/item-details";
+import {PersonDetails, PersonList} from "../sw-components";
 
-export default class PeoplePage extends Component{
-
-  swapiService = new SwapiService();
+export default class PeoplePage extends Component {
 
   state = {
     selectedItem: 3,
@@ -25,29 +19,15 @@ export default class PeoplePage extends Component{
 
   render() {
 
-    const { getPerson, getPersonImage } = this.swapiService;
-
     const itemList = (
-      <ItemList
-        onItemSelected={this.onItemSelected}
-        getData={this.swapiService.getAllPerson}
-      >
-        {(i) => (
-          `${i.name}, ${i.gender}`
-        )}
-      </ItemList>
+      <ErrorBoundry>
+        <PersonList onItemSelected={this.onItemSelected}/>
+      </ErrorBoundry>
     )
 
     const item = (
       <ErrorBoundry>
-        <ItemDetails
-          itemId={this.state.selectedItem}
-          getData={getPerson}
-          getImageUrl={getPersonImage}
-        >
-          <Record field="gender" label="Gender:"/>
-          <Record field="eyeColor" label="Eye color:"/>
-        </ItemDetails>
+        <PersonDetails itemId={this.state.selectedItem} />
       </ErrorBoundry>
     )
 
@@ -55,5 +35,4 @@ export default class PeoplePage extends Component{
         <Row left={itemList} right={item} />
     )
   }
-
 }

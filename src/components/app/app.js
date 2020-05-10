@@ -32,15 +32,7 @@ export default class App extends Component{
       <div>
         <Header/>
         {/*<RandomPlanet/>*/}
-        {/*<PeoplePage />*/}
-        {/*<Row left={peopleList} right={personDetails} />*/}
-        <PersonDetails itemId={3} />
-        <PlanetDetails itemId={5} />
-        <StarshipDetails itemId={9} />
-
-        <PersonList />
-        <PlanetList />
-        <StarshipList />
+        <PeoplePage />
       </div>
     );
   }
