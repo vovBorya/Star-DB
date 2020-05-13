@@ -7,6 +7,8 @@ import PeoplePage from "../people-page";
 import { SwapiServiceProvider } from "../swapi-service-context";
 import ErrorBoundry from "../error-boundry";
 import SwapiService from "../../services/swapi-service";
+import PlanetDetails from "../sw-components/planet-details";
+import StarshipDetails from "../sw-components/starship-details";
 
 export default class App extends Component{
 

@@ -1,7 +1,7 @@
 import React from "react";
 import ItemDetails from "../item-details";
 import {Record} from "../item-details/item-details";
-import { withSwapiService } from '../hoc-helper'
+import { withSwapiService } from '../hoc-helper';
 
 const PersonDetails = ({ itemId, swapiService }) => {
 
