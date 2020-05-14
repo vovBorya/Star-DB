@@ -1,4 +1,5 @@
 import React  from 'react';
+import PropTypes from "prop-types";
 
 import './item-list.css';
 import ErrorBoundry from "../error-boundry";
@@ -27,6 +28,16 @@ const ItemList = (props) => {
       </ul>
     </ErrorBoundry>
   );
+}
+
+ItemList.defaultProps = {
+  onItemSelected: () => {}
+}
+
+ItemList.propTypes = {
+  onItemSelected: PropTypes.func,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.func.isRequired
 }
 
 export  default ItemList;
