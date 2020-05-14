@@ -6,7 +6,8 @@ const ItemView = ({item, image, children}) => {
   return (
     <React.Fragment>
       <img className="item-image"
-         src={image} />
+         src={image}
+         alt={`Item image`}/>
 
       <div className="card-body">
         <h4>{name}</h4>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Row from "../row";
 import ErrorBoundry from "../error-boundry";
-import {PersonDetails, PersonList} from "../sw-components";
+import { PersonDetails, PersonList } from "../sw-components";
 
 export default class PeoplePage extends Component {
 
@@ -10,11 +10,8 @@ export default class PeoplePage extends Component {
     hasError: false
   }
 
-  onItemSelected = (id) => {
-    console.log(id)
-    this.setState({
-      selectedItem: id
-    })
+  onItemSelected = (selectedItem) => {
+    this.setState({ selectedItem })
   }
 
   render() {
