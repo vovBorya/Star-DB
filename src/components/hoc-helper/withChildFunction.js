@@ -1,6 +1,6 @@
 import React from "react";
 
-const withChildFunction = (Wrapped, func) => {
+const withChildFunction = (func) => (Wrapped) => {
   return (props) => {
     return (
       <Wrapped {...props}>
