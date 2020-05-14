@@ -9,6 +9,7 @@ import ErrorBoundry from "../error-boundry";
 import SwapiService from "../../services/swapi-service";
 import PlanetDetails from "../sw-components/planet-details";
 import StarshipDetails from "../sw-components/starship-details";
+import {PersonList, PlanetList, StarshipList} from "../sw-components";
 
 export default class App extends Component{
 
@@ -22,8 +23,10 @@ export default class App extends Component{
             <Header/>
             {/*<RandomPlanet/>*/}
             <PeoplePage />
-            <PlanetDetails itemId={9} />
-            <StarshipDetails itemId={9} />
+            {/*<PlanetDetails itemId={9} />
+            <StarshipDetails itemId={9} />*/}
+            <PlanetList />
+            <StarshipList />
           </div>
         </SwapiServiceProvider>
       </ErrorBoundry>
