@@ -10,7 +10,9 @@ export default class Header extends React.Component{
 
   render() {
 
-    const { onPageClick } = this.props;
+    const { onItemMenuClick } = this.props;
+
+    const classActiveItem =
 
     return (
       <div className="header d-flex">
@@ -21,17 +23,17 @@ export default class Header extends React.Component{
         </h2>
         <ul className="d-flex">
           <li>
-            <a href="#" onClick={() => onPageClick('people')}>
+            <a href="#" onClick={() => onItemMenuClick('people')}>
               People
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => onPageClick('planets')}>
+            <a href="#" onClick={() => onItemMenuClick('planets')}>
               Planets
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => onPageClick('starships')}>
+            <a href="#" onClick={() => onItemMenuClick('starships')}>
               Starships
             </a>
           </li>

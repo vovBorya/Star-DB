@@ -16,7 +16,14 @@ export default class App extends Component{
     activePage: ''
   }
 
-  onPageClick = (page) => {
+  pages = {
+    people: <PeoplePage /> ,
+    planets: <PlanetsPage /> ,
+    starships: <StarshipsPage />
+  }
+
+
+  onItemMenuClick = (page) => {
     this.setState({
       activePage: page
     })
@@ -26,25 +33,13 @@ export default class App extends Component{
 
     const { activePage } = this.state;
 
-    let content;
-
-    switch (activePage) {
-      case 'people':
-        content = <PeoplePage />;
-        break;
-      case 'planets':
-        content = <PlanetsPage />;
-        break;
-      case 'starships':
-        content = <StarshipsPage />;
-        break;
-    }
+    const content = this.pages[activePage];
 
     return (
       <ErrorBoundry>
         <SwapiServiceProvider value={this.swapiService}>
           <div>
-            <Header onPageClick={this.onPageClick} />
+            <Header onPageClick={this.onItemMenuClick} />
             {/*<RandomPlanet />*/}
             {content}
           </div>
