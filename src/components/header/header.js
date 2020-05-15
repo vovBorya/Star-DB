@@ -8,11 +8,33 @@ export default class Header extends React.Component{
     activePage: 'people'
   }
 
+  menuItems = [
+    {name: 'people', label: 'People'},
+    {name: 'planets', label: 'Planets'},
+    {name: 'starships', label: 'Starships'}
+  ]
+
+
   render() {
 
-    const { onItemMenuClick } = this.props;
+    const { onItemMenuClick, activePage } = this.props;
 
-    const classActiveItem =
+    const menuItems = this.menuItems.map(({ name, label }) => {
+      const isActive = activePage === name;
+
+      const className = (isActive) ? 'activeItem': '';
+
+      return (
+        <li
+          className={className}
+          onClick={() => onItemMenuClick(name)}
+        >
+          <a href="#" >
+            {label}
+          </a>
+        </li>
+      )
+    })
 
     return (
       <div className="header d-flex">
@@ -22,21 +44,7 @@ export default class Header extends React.Component{
           </a>
         </h2>
         <ul className="d-flex">
-          <li>
-            <a href="#" onClick={() => onItemMenuClick('people')}>
-              People
-            </a>
-          </li>
-          <li>
-            <a href="#" onClick={() => onItemMenuClick('planets')}>
-              Planets
-            </a>
-          </li>
-          <li>
-            <a href="#" onClick={() => onItemMenuClick('starships')}>
-              Starships
-            </a>
-          </li>
+          {menuItems}
         </ul>
       </div>
     );

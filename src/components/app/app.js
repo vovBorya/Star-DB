@@ -13,7 +13,7 @@ export default class App extends Component{
   swapiService = new SwapiService();
 
   state = {
-    activePage: ''
+    activePage: 'people'
   }
 
   pages = {
@@ -39,7 +39,7 @@ export default class App extends Component{
       <ErrorBoundry>
         <SwapiServiceProvider value={this.swapiService}>
           <div>
-            <Header onPageClick={this.onItemMenuClick} />
+            <Header onItemMenuClick={this.onItemMenuClick} activePage={activePage}/>
             {/*<RandomPlanet />*/}
             {content}
           </div>
