@@ -12,16 +12,41 @@ export default class App extends Component{
 
   swapiService = new SwapiService();
 
+  state = {
+    activePage: ''
+  }
+
+  onPageClick = (page) => {
+    this.setState({
+      activePage: page
+    })
+  }
+
   render() {
+
+    const { activePage } = this.state;
+
+    let content;
+
+    switch (activePage) {
+      case 'people':
+        content = <PeoplePage />;
+        break;
+      case 'planets':
+        content = <PlanetsPage />;
+        break;
+      case 'starships':
+        content = <StarshipsPage />;
+        break;
+    }
+
     return (
       <ErrorBoundry>
         <SwapiServiceProvider value={this.swapiService}>
           <div>
-            <Header/>
+            <Header onPageClick={this.onPageClick} />
             {/*<RandomPlanet />*/}
-            <PeoplePage />
-            <PlanetsPage />
-            <StarshipsPage />
+            {content}
           </div>
         </SwapiServiceProvider>
       </ErrorBoundry>
