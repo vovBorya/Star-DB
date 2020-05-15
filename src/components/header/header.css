@@ -34,3 +34,7 @@
     transition: .3s;
     color: #00bc8c;
 }
+
+.activeItem {
+    background-color: #444;
+}
