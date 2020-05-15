@@ -4,10 +4,6 @@ import './header.css';
 
 export default class Header extends React.Component{
 
-  state = {
-    activePage: 'people'
-  }
-
   menuItems = [
     {name: 'people', label: 'People'},
     {name: 'planets', label: 'Planets'},
