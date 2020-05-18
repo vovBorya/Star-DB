@@ -6,9 +6,9 @@ import './header.css';
 export default class Header extends React.Component{
 
   menuItems = [
-    {link: '/people', label: 'People'},
-    {link: '/planets', label: 'Planets'},
-    {link: '/starships', label: 'Starships'}
+    {link: 'people', label: 'People'},
+    {link: 'planets', label: 'Planets'},
+    {link: 'starships', label: 'Starships'}
   ]
 
 
@@ -18,7 +18,7 @@ export default class Header extends React.Component{
 
       return (
         <li>
-          <Link to={link} >
+          <Link to={`/${link}/`} >
             {label}
           </Link>
         </li>

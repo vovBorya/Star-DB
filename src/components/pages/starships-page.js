@@ -6,10 +6,7 @@ import { withRouter } from 'react-router-dom'
 const StarshipsPage = ({ history }) => (
   <ErrorBoundry>
     <StarshipList
-      onItemSelected={(itemId) => {
-        const newPath = `/starships/${itemId}`;
-        history.push(newPath);
-      }}
+      onItemSelected={(id) => history.push(id)}
     />
   </ErrorBoundry>
 )
