@@ -8,6 +8,8 @@ import { SwapiServiceProvider } from "../swapi-service-context";
 import ErrorBoundry from "../error-boundry";
 import SwapiService from "../../services/swapi-service";
 
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 export default class App extends Component{
 
   swapiService = new SwapiService();
@@ -38,11 +40,17 @@ export default class App extends Component{
     return (
       <ErrorBoundry>
         <SwapiServiceProvider value={this.swapiService}>
-          <div>
-            <Header onItemMenuClick={this.onItemMenuClick} activePage={activePage}/>
-            {/*<RandomPlanet />*/}
-            {content}
-          </div>
+          <Router>
+            <div>
+              <Header onItemMenuClick={this.onItemMenuClick} activePage={activePage}/>
+              {/*<RandomPlanet />*/}
+              {/*{content}*/}
+
+              <Route path="/people" component={PeoplePage} />
+              <Route path="/planets" component={PlanetsPage} />
+              <Route path="/starships" component={StarshipsPage} />
+            </div>
+          </Router>
         </SwapiServiceProvider>
       </ErrorBoundry>
     );
