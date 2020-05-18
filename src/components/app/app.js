@@ -14,41 +14,26 @@ export default class App extends Component{
 
   swapiService = new SwapiService();
 
-  state = {
-    activePage: ''
-  }
-
-  pages = {
-    people: <PeoplePage /> ,
-    planets: <PlanetsPage /> ,
-    starships: <StarshipsPage />
-  }
-
-
-  onItemMenuClick = (page) => {
-    this.setState({
-      activePage: page
-    })
-  }
-
   render() {
-
-    const { activePage } = this.state;
-
-    const content = this.pages[activePage];
 
     return (
       <ErrorBoundry>
         <SwapiServiceProvider value={this.swapiService}>
           <Router>
             <div>
-              <Header onItemMenuClick={this.onItemMenuClick} activePage={activePage}/>
-              {/*<RandomPlanet />*/}
-              {/*{content}*/}
+              <Header />
+                <div className="stardb-app">
+                <RandomPlanet updateInterval={40000}/>
 
-              <Route path="/people" component={PeoplePage} />
-              <Route path="/planets" component={PlanetsPage} />
-              <Route path="/starships" component={StarshipsPage} />
+                <Route
+                  path="/"
+                  render={() => <h2>Welcome to StarDB</h2>}
+                  exact={true}
+                />
+                <Route path="/people" component={PeoplePage} />
+                <Route path="/planets" component={PlanetsPage} />
+                <Route path="/starships" component={StarshipsPage} />
+              </div>
             </div>
           </Router>
         </SwapiServiceProvider>
