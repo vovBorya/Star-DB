@@ -25,7 +25,15 @@ export default class App extends Component{
     isLoggedIn: false
   }
 
+  onLogin = (status) => {
+    this.setState({
+      isLoggedIn: status
+    })
+  }
+
   render() {
+
+    const { isLoggedIn } = this.state;
 
     return (
       <ErrorBoundry>
@@ -53,13 +61,13 @@ export default class App extends Component{
                 <Route
                   path="/secret-page/"
                   render={() => (
-                    <SecretPage isLoggedIn={false}/>
+                    <SecretPage isLoggedIn={isLoggedIn}/>
                   )}
                 />
                 <Route
                   path="/login/"
                   render={() => (
-                    <LoginPage isLoggedIn={false} onLogin={() => {}}/>
+                    <LoginPage isLoggedIn={isLoggedIn} onLogin={this.onLogin}/>
                   )}
                 />
               </div>
