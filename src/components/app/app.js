@@ -3,7 +3,13 @@ import React, { Component } from 'react';
 import Header from '../header';
 import RandomPlanet from '../random-planet';
 import './app.css';
-import { PeoplePage, PlanetsPage, StarshipsPage } from "../pages";
+import {
+  PeoplePage,
+  PlanetsPage,
+  StarshipsPage,
+  LoginPage,
+  SecretPage
+} from "../pages";
 import { SwapiServiceProvider } from "../swapi-service-context";
 import ErrorBoundry from "../error-boundry";
 import SwapiService from "../../services/swapi-service";
@@ -15,7 +21,19 @@ export default class App extends Component{
 
   swapiService = new SwapiService();
 
+  state = {
+    isLoggedIn: false
+  }
+
+  onLogin = (status) => {
+    this.setState({
+      isLoggedIn: status
+    })
+  }
+
   render() {
+
+    const { isLoggedIn } = this.state;
 
     return (
       <ErrorBoundry>
@@ -39,6 +57,18 @@ export default class App extends Component{
                   render={({match}) => {
                     return <StarshipDetails itemId={match.params.id}/>
                   }}
+                />
+                <Route
+                  path="/secret-page/"
+                  render={() => (
+                    <SecretPage isLoggedIn={isLoggedIn}/>
+                  )}
+                />
+                <Route
+                  path="/login/"
+                  render={() => (
+                    <LoginPage isLoggedIn={isLoggedIn} onLogin={this.onLogin}/>
+                  )}
                 />
               </div>
             </div>
