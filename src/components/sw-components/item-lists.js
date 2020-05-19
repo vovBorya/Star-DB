@@ -27,7 +27,7 @@ const mapStarshipMethodsToProps = (swapiService) => {
 const PersonList = compose(
                     withSwapiService(mapPersonMethodsToProps),
                     withData,
-                    withChildFunction(renderPlanetName)
+                    withChildFunction(renderPersonName)
                    )(ItemList)
 
 const PlanetList = compose(

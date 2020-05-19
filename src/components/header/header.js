@@ -1,33 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './header.css';
 
 export default class Header extends React.Component{
 
   menuItems = [
-    {name: 'people', label: 'People'},
-    {name: 'planets', label: 'Planets'},
-    {name: 'starships', label: 'Starships'}
+    {link: 'people', label: 'People'},
+    {link: 'planets', label: 'Planets'},
+    {link: 'starships', label: 'Starships'}
   ]
 
 
   render() {
 
-    const { onItemMenuClick, activePage } = this.props;
-
-    const menuItems = this.menuItems.map(({ name, label }) => {
-      const isActive = activePage === name;
-
-      const className = (isActive) ? 'activeItem': '';
+    const menuItems = this.menuItems.map(({ link, label }) => {
 
       return (
-        <li
-          className={className}
-          onClick={() => onItemMenuClick(name)}
-        >
-          <a href="#" >
+        <li>
+          <Link to={`/${link}/`} >
             {label}
-          </a>
+          </Link>
         </li>
       )
     })
@@ -35,9 +28,9 @@ export default class Header extends React.Component{
     return (
       <div className="header d-flex">
         <h2>
-          <a href="#">
+          <Link to="/">
             Star DB
-          </a>
+          </Link>
         </h2>
         <ul className="d-flex">
           {menuItems}
