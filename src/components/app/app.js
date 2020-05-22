@@ -17,8 +17,7 @@ import SwapiService from "../../services/swapi-service";
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Redirect
+  Switch
 } from "react-router-dom";
 import {StarshipDetails} from "../sw-components";
 
@@ -56,7 +55,7 @@ export default class App extends Component{
                     exact={true}
                   />
                   <Route path="/people/:id?" component={PeoplePage} />
-                  <Route path="/planets" component={PlanetsPage} />
+                  <Route path="/planets/:id?" component={PlanetsPage} />
                   <Route path="/starships" exact component={StarshipsPage} />
                   <Route
                     path="/starships/:id"
