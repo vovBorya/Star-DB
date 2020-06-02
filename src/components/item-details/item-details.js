@@ -14,6 +14,12 @@ export {
   Record
 }
 
+const SelectItemMsg = () => (
+  <div>
+    <p>Please, select any item to see its details</p>
+  </div>
+)
+
 export default class ItemDetails extends Component {
 
   state = {
@@ -55,11 +61,13 @@ export default class ItemDetails extends Component {
 
     const hasData = !updating;
 
-    const loader = updating ? <Loader />: null;
+    const loader = ( updating && item ) ? <Loader />: null;
     const content = hasData ? <ItemView item={ item } image={image} children={this.props.children}/>: null;
+    const selectItemMsg = !item ? <SelectItemMsg />: null;
 
     return (
       <div className="item-details card">
+        {selectItemMsg}
         {loader}
         {content}
       </div>
