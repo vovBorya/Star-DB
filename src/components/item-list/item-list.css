@@ -11,3 +11,22 @@
     transition: 0.5s;
     background-color: #444444;
 }
+
+.context-menu {
+    border-radius: 3px;
+    background-color: #808080;
+    z-index: 1;
+}
+
+.context-menu__item {
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.context-menu__item:focus {
+    outline: none;
+}
+
+.context-menu__item:hover {
+    background-color: #747474;
+}

@@ -1,5 +1,6 @@
 import React  from 'react';
 import PropTypes from "prop-types";
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 import './item-list.css';
 import ErrorBoundry from "../error-boundry";
@@ -13,11 +14,18 @@ const ItemList = (props) => {
 
     const label = props.children(item);
     return (
-      <li className="list-group-item"
-          key={id}
-          onClick={() => onItemSelected(id)}>
-        {label}
-      </li>
+      <>
+        <ContextMenuTrigger id={`item-${id}`}>
+          <li className="list-group-item"
+              key={id}
+              onClick={() => onItemSelected(id)}>
+            {label}
+          </li>
+        </ContextMenuTrigger>
+        <ContextMenu className='context-menu' id={`item-${id}`}>
+          <MenuItem className='context-menu__item' data={{foo: 'bar'}} onClick={() => onItemSelected(id)}>show {label}</MenuItem>
+        </ContextMenu>
+      </>
     );
   });
 
