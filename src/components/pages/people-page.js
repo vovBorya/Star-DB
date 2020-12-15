@@ -12,17 +12,17 @@ const PeoplePage = ({ match, history }) => {
     <ErrorBoundry>
       <PersonList onItemSelected={(id) => history.push(id)}/>
     </ErrorBoundry>
-  )
+  );
 
   const item = (
     <ErrorBoundry>
-      <PersonDetails itemId={id} />
+      <PersonDetails itemId={id}/>
     </ErrorBoundry>
-  )
+  );
 
-  return(
-      <Row left={itemList} right={item} />
-  )
+  return (
+    <Row left={itemList} right={item}/>
+  );
 }
 
 export default withRouter(PeoplePage);

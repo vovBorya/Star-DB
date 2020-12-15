@@ -29,14 +29,7 @@ export default class App extends Component{
     isLoggedIn: false
   }
 
-  onLogin = (status) => {
-    this.setState({
-      isLoggedIn: status
-    })
-  }
-
   render() {
-
     const { isLoggedIn } = this.state;
 
     return (
@@ -59,9 +52,7 @@ export default class App extends Component{
                   <Route path="/starships" exact component={StarshipsPage} />
                   <Route
                     path="/starships/:id"
-                    render={({match}) => {
-                      return <StarshipDetails itemId={match.params.id}/>
-                    }}
+                    render={({match}) => <StarshipDetails itemId={match.params.id}/>}
                   />
                   <Route
                     path="/secret-page/"
@@ -72,13 +63,14 @@ export default class App extends Component{
                   <Route
                     path="/login/"
                     render={() => (
-                      <LoginPage isLoggedIn={isLoggedIn} onLogin={this.onLogin}/>
+                      <LoginPage
+                        isLoggedIn={isLoggedIn}
+                        onLogin={(isLoggedIn) => this.setState({isLoggedIn})}
+                      />
                     )}
                   />
 
-                  <Route render={() => (
-                    <h2>Page is not found</h2>
-                  )}/>
+                  <Route render={() => <h2>Page is not found</h2>}/>
                 </Switch>
               </div>
             </div>

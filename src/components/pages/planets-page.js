@@ -12,17 +12,17 @@ const PlanetsPage = ({ match, history }) =>{
     <ErrorBoundry>
       <PlanetList onItemSelected={(id) => history.push(id)}/>
     </ErrorBoundry>
-  )
+  );
 
   const item = (
     <ErrorBoundry>
-      <PlanetDetails itemId={id} />
+      <PlanetDetails itemId={id}/>
     </ErrorBoundry>
-  )
+  );
 
-  return(
-    <Row left={itemList} right={item} />
-  )
+  return (
+    <Row left={itemList} right={item}/>
+  );
 }
 
 export default withRouter(PlanetsPage)

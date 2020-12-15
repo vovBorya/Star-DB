@@ -3,12 +3,10 @@ import ErrorBoundry from "../error-boundry";
 import { StarshipList } from "../sw-components";
 import { withRouter } from 'react-router-dom'
 
-const StarshipsPage = ({ history }) => (
+const StarshipsPage = ({history}) => (
   <ErrorBoundry>
-    <StarshipList
-      onItemSelected={(id) => history.push(id)}
-    />
+    <StarshipList onItemSelected={(id) => history.push(id)}/>
   </ErrorBoundry>
-)
+);
 
 export default withRouter(StarshipsPage)
