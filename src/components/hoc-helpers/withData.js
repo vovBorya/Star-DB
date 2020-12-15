@@ -1,33 +1,16 @@
-import React, {Component} from "react";
+import React, {useEffect, useState} from "react";
 import Loader from "../loader";
 
-const withData = (View) => {
-  return class extends Component{
+const withData = (View) => (props) => {
+  const [data, setData] = useState(null);
 
-    state = {
-      data: null,
-    }
+  useEffect(() => {
+    props.getData().then(setData);
+  }, []);
 
-    componentDidMount() {
-      this.props.getData()
-        .then((data) => {
-          this.setState({
-            data
-          });
-        });
-    }
-
-    render() {
-
-      const { data } = this.state;
-
-      if (!data) {
-        return <Loader />
-      }
-
-      return <View {...this.props} data={data}/>
-    }
-  }
-}
+  return data
+    ? <View {...props} data={data}/>
+    : <Loader />
+};
 
 export default withData;

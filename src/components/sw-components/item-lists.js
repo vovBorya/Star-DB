@@ -12,35 +12,35 @@ import {
   renderStarshipName
 } from "./render-name";
 
-const mapPersonMethodsToProps = (swapiService) => {
-  return { getData: swapiService.getAllPerson }
-}
+const mapPersonMethodsToProps = (swapiService) => ({
+  getData: swapiService.getAllPerson
+});
 
-const mapPlanetMethodsToProps = (swapiService) => {
-  return { getData: swapiService.getAllPlanets }
-}
+const mapPlanetMethodsToProps = (swapiService) => ({
+  getData: swapiService.getAllPlanets
+});
 
-const mapStarshipMethodsToProps = (swapiService) => {
-  return { getData: swapiService.getAllStarships }
-}
+const mapStarshipMethodsToProps = (swapiService) => ({
+  getData: swapiService.getAllStarships
+});
 
 const PersonList = compose(
-                    withSwapiService(mapPersonMethodsToProps),
-                    withData,
-                    withChildFunction(renderPersonName)
-                   )(ItemList)
+  withSwapiService(mapPersonMethodsToProps),
+  withData,
+  withChildFunction(renderPersonName)
+)(ItemList);
 
 const PlanetList = compose(
-                    withSwapiService(mapPlanetMethodsToProps),
-                    withData,
-                    withChildFunction(renderPlanetName)
-                   )(ItemList);
+  withSwapiService(mapPlanetMethodsToProps),
+  withData,
+  withChildFunction(renderPlanetName)
+)(ItemList);
 
 const StarshipList = compose(
-                      withSwapiService(mapStarshipMethodsToProps),
-                      withData,
-                      withChildFunction(renderStarshipName)
-                     )(ItemList);
+  withSwapiService(mapStarshipMethodsToProps),
+  withData,
+  withChildFunction(renderStarshipName)
+)(ItemList);
 
 export {
   PersonList,

@@ -30,3 +30,11 @@
 .context-menu__item:hover {
     background-color: #747474;
 }
+
+.react-contextmenu {
+    display: none;
+}
+
+.react-contextmenu--visible {
+    display: block;
+}
